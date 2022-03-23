@@ -10,13 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".activity.UserSettingsActivity"
+            android:exported="false"
+            android:parentActivityName=".activity.HomeActivity" />
+        <activity
+            android:name=".activity.ViewTaskActivity"
+            android:exported="false"
+            android:parentActivityName=".activity.HomeActivity" />
+        <activity
             android:name=".activity.AllTasksActivity"
-            android:parentActivityName=".activity.HomeActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".activity.HomeActivity" />
         <activity
             android:name=".activity.AddTaskActivity"
-            android:parentActivityName=".activity.HomeActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".activity.HomeActivity" />
         <activity
             android:name=".activity.HomeActivity"
             android:exported="true">
