@@ -4,8 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
+
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -18,20 +17,10 @@ public class AddTaskActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
 
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-
-
         //Buttons
         Button addTaskButton = findViewById(R.id.buttonAddTaskTaskActivity);
         //Event Listener
         addTaskButton.setOnClickListener(view -> ((TextView)findViewById(R.id.textViewAddTaskSubmit)).setText(R.string.Submitted));
-
-
-
-
-
 
     }
 }
