@@ -48,7 +48,7 @@ public class SetUsernameTest {
                                 childAtPosition(
                                         withId(android.R.id.content),
                                         0),
-                                9),
+                                3),
                         isDisplayed()));
         appCompatImageView.perform(click());
 
@@ -109,7 +109,7 @@ public class SetUsernameTest {
                                 childAtPosition(
                                         withId(android.R.id.content),
                                         0),
-                                9),
+                                3),
                         isDisplayed()));
         appCompatImageView2.perform(click());
 
