@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.shaneroach.taskmaster.R;
-import com.shaneroach.taskmaster.enums.state;
 
 public class ViewTaskActivity extends AppCompatActivity {
 
