@@ -2,12 +2,14 @@ package com.shaneroach.taskmaster.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.shaneroach.taskmaster.R;
 
@@ -29,6 +31,7 @@ public class UserSettingsActivity extends AppCompatActivity {
         }
 
         Button saveButton = findViewById(R.id.buttonUserSettingsSaveUsername);
+        Context userSettingActivity = this;
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -38,6 +41,8 @@ public class UserSettingsActivity extends AppCompatActivity {
                 System.out.println("this waas pushed" + userUsernameString);
                 preferencesEditor.putString(USER_USERNAME_TAG, userUsernameString);
                 preferencesEditor.apply();
+
+                //Toast.makeText(userSettingActivity, "Settings saved!", Toast.LENGTH_SHORT).show();
             }
         });
 

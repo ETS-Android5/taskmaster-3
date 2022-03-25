@@ -13,12 +13,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.shaneroach.taskmaster.R;
 import com.shaneroach.taskmaster.activity.ViewTaskActivity;
-import com.shaneroach.taskmaster.enums.state;
 import com.shaneroach.taskmaster.model.Task;
 
 import java.util.List;
@@ -47,7 +45,7 @@ public class TaskListRecycleReviewAdapter extends RecyclerView.Adapter<TaskListR
         taskFragmentTextView.setText(taskList.get(position).getTitle());
         String taskTitle = taskList.get(position).getTitle();
         String taskBody = taskList.get(position).getBody();
-        String taskState = taskList.get(position).getState().toString();
+        String taskState = taskList.get(position).getTaskStatusEnum().toString();
 
 
         View taskViewHolder = holder.itemView;

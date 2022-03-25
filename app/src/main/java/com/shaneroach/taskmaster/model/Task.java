@@ -1,17 +1,38 @@
 package com.shaneroach.taskmaster.model;
 
 
-import com.shaneroach.taskmaster.enums.state;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+import com.shaneroach.taskmaster.enums.TaskStatusEnum;
+
+import java.util.Date;
+
+
+@Entity
 public class Task {
+
+    @PrimaryKey(autoGenerate = true)
+    Long id;
     String title;
     String body;
-    state state;
+    TaskStatusEnum taskStatusEnum;
+    java.util.Date dateCreated;
 
-    public Task(String title, String body, state state) {
+
+    public Task(String title, String body, TaskStatusEnum taskStatusEnum, Date dateCreated) {
         this.title = title;
         this.body = body;
-        this.state = state;
+        this.taskStatusEnum = taskStatusEnum;
+        this.dateCreated = dateCreated;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -30,11 +51,19 @@ public class Task {
         this.body = body;
     }
 
-    public com.shaneroach.taskmaster.enums.state getState() {
-        return state;
+    public TaskStatusEnum getTaskStatusEnum() {
+        return taskStatusEnum;
     }
 
-    public void setState(com.shaneroach.taskmaster.enums.state state) {
-        this.state = state;
+    public void setTaskStatusEnum(TaskStatusEnum taskStatusEnum) {
+        this.taskStatusEnum = taskStatusEnum;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
     }
 }

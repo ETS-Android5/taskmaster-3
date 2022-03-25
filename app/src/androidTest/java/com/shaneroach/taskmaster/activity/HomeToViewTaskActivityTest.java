@@ -48,10 +48,10 @@ public class HomeToViewTaskActivityTest {
         recyclerView.perform(actionOnItemAtPosition(0, click()));
 
         ViewInteraction textView = onView(
-                allOf(withId(R.id.textTaskViewTitle), withText("Laundry"),
+                allOf(withId(R.id.textTaskViewTitle), withText("Hello World"),
                         withParent(withParent(withId(android.R.id.content))),
                         isDisplayed()));
-        textView.check(matches(withText("Laundry")));
+        textView.check(matches(withText("Hello World")));
     }
 
     private static Matcher<View> childAtPosition(
