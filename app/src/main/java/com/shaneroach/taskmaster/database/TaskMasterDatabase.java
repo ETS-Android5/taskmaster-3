@@ -8,7 +8,7 @@ import androidx.room.TypeConverters;
 import com.shaneroach.taskmaster.dao.TaskDao;
 import com.shaneroach.taskmaster.model.Task;
 
-@Database(entities = {Task.class}, version = 2)
+@Database(entities = {Task.class}, version = 3)
 @TypeConverters({TaskMasterConverters.class})
 public abstract class TaskMasterDatabase extends RoomDatabase {
 

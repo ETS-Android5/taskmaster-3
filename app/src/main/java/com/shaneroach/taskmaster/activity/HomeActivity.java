@@ -12,6 +12,7 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.shaneroach.taskmaster.R;
@@ -51,7 +52,6 @@ public class HomeActivity extends AppCompatActivity {
 
         tasks = taskMasterDatabase.taskDao().findAll();
 
-        //setUpDeleteButton();
         setUpAddTaskButton();
         setUpAllTasksButton();
         setUpUserSettingsButton();
@@ -79,15 +79,10 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
-    private void setUpDeleteButton() {
-        Button buttonDeleteTask = findViewById(R.id.buttonDeleteAllTasks);
-        buttonDeleteTask.setOnClickListener(view -> {
-            taskMasterDatabase.taskDao().deleteAll(tasks);
-        });
-    }
+
 
     private void setUpAllTasksButton(){
-        Button buttonAllTask = findViewById(R.id.buttonAllTask);
+        LinearLayout buttonAllTask = findViewById(R.id.buttonAllTask);
         buttonAllTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,7 +94,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void setUpAddTaskButton(){
-        Button buttonAddTask = findViewById(R.id.buttonAddTask);
+        LinearLayout buttonAddTask = findViewById(R.id.buttonAddTask);
         buttonAddTask.setOnClickListener(view -> {
             Intent goToAddTaskActivity = new Intent(HomeActivity.this, AddTaskActivity.class);
             startActivity(goToAddTaskActivity);

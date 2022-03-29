@@ -38,7 +38,7 @@ public class AddTaskActivity extends AppCompatActivity {
                 .build();
 
         Spinner taskStateSpinner = (Spinner) findViewById(R.id.editAddTaskStateSpinner);
-        taskStateSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, TaskStatusEnum.values()));
+        taskStateSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.preference_category, TaskStatusEnum.values()));
 
         //Buttons
         Button addTaskButton = (Button) findViewById(R.id.buttonAddTaskTaskActivity);

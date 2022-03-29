@@ -14,15 +14,15 @@ An android application that allows you to keep track of all your tasks.
 
 ### View current tasks
 
-User can view all tasks in the `homepage`, displayed in a recycle view.
+- User can view all tasks in the `homepage`, displayed in a recycle view.
 
 ### Add a task
 
-User can add a task with a given title, description, and status. This will be added to the users current task list.
+- User can add a task with a given title, description, and status. This will be added to the users current task list.
 
 ### View a specific task
 
-User can view a specific task from the homepage recycle view in detail, to find information about the description and status.
+- User can view a specific task from the homepage recycle view in detail, to find information about the description and status.
 
 
 ## Change Log
@@ -91,14 +91,29 @@ User can view a specific task from the homepage recycle view in detail, to find 
 
 ![add task form](/images/view_task_lab29.png)
 
+
+### Lab 31 (3.28.22)
+
+- Ensured espreeso tests are functional.
+- Refactored Main Activity
+- Added styling to UI
+
+- Updated `Homepage`
+
+![Update Homepage](/images/update_homepage_lab31.png)
+
+- Updated `View Task`
+
+![Update ViewTask](/images/update_viewTask_lab31.png)
+
 ## Testing
 
-- `SetUsernameTest` tests to see if the correct username is displayed on the homepage.
+- `SetUsernameHomeActivityTest` tests to see if the correct username is displayed on the homepage.
 
-- `HomeToViewTaskActivityTest` tests to see if correct task title is displayed on the view Task page when
+- `CorrectTaskDetailsActivityTest` tests to see if correct task title is displayed on the view Task page when
 entering from the home screen.
 
-- `AddNewTaskTest` tests to see if a new added task displays in the recycle view after added in the `add task page`.
+- `AddATaskActivityTest` tests to see if a new added task displays in the recycle view after added in the `add task page`.
 
 ## Resources/Citations
 
