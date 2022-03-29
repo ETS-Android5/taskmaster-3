@@ -2,15 +2,16 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="318dp"
-    android:layout_height="140dp"
+    android:layout_height="75dp"
     tools:context=".fragment.TaskListFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:id="@+id/taskFragmentTextViewHome"
-        android:layout_width="301dp"
-        android:layout_height="64dp"
+        android:layout_width="315dp"
+        android:layout_height="70dp"
         android:text="Blank Task "
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#FFF" />
 
 </FrameLayout>
