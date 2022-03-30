@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "serviceName": "AppSync",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 7,
+      "apiKeyExpirationDate": "2022-04-06T00:59:53.099Z",
+      "keyDescription": ""
+    },
+    "conflictResolution": {},
+    "apiName": "amplifyDatasource",
+    "gqlSchemaPath": "/Users/shaneroach/projects/401/taskmaster/amplify/backend/api/amplifyDatasource/schema.graphql",
+    "additionalAuthTypes": []
+  }
+}

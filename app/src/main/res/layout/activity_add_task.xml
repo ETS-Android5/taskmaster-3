@@ -11,7 +11,7 @@
         android:id="@+id/textViewTaskActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Task"
+        android:text="@string/add_task_two"
         android:textColor="@color/cardview_dark_background"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -34,7 +34,9 @@
         app:layout_constraintHorizontal_bias="0.248"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTaskActivity"
-        app:layout_constraintVertical_bias="0.14" />
+        app:layout_constraintVertical_bias="0.14"
+        android:autofillHints=""
+        tools:ignore="LabelFor" />
 
     <EditText
         android:id="@+id/editTextTaskDescription"
@@ -48,13 +50,15 @@
         app:layout_constraintHorizontal_bias="0.248"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTaskTitle"
-        app:layout_constraintVertical_bias="0.129" />
+        app:layout_constraintVertical_bias="0.129"
+        android:autofillHints=""
+        tools:ignore="LabelFor" />
 
     <Button
         android:id="@+id/buttonAddTaskTaskActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ADD TASK"
+        android:text="@string/add_task"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -66,7 +70,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total Tasks: 0"
+        android:text="@string/total_tasks_0"
         android:textColor="@color/cardview_dark_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -90,7 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
-        android:text="Task Name"
+        android:text="@string/task_name"
         android:textColor="@color/cardview_dark_background"
         app:layout_constraintBottom_toTopOf="@+id/editTextTaskTitle"
         app:layout_constraintStart_toStartOf="parent" />
@@ -101,7 +105,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:textColor="@color/cardview_dark_background"
-        android:text="Task Description"
+        android:text="@string/task_description"
         app:layout_constraintBottom_toTopOf="@+id/editTextTaskDescription"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -120,7 +124,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/cardview_dark_background"
         android:layout_marginStart="56dp"
-        android:text="State"
+        android:text="@string/state"
         app:layout_constraintBottom_toTopOf="@+id/editAddTaskStateSpinner"
         app:layout_constraintStart_toStartOf="parent" />
 

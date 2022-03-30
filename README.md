@@ -25,6 +25,8 @@ An android application that allows you to keep track of all your tasks.
 - User can view a specific task from the homepage recycle view in detail, to find information about the description and status.
 
 
+
+
 ## Change Log
 
 
@@ -94,7 +96,7 @@ An android application that allows you to keep track of all your tasks.
 
 ### Lab 31 (3.28.22)
 
-- Ensured espreeso tests are functional.
+- Ensured espresso tests are functional.
 - Refactored Main Activity
 - Added styling to UI
 
@@ -105,6 +107,22 @@ An android application that allows you to keep track of all your tasks.
 - Updated `View Task`
 
 ![Update ViewTask](/images/update_viewTask_lab31.png)
+
+
+### Lab 32 (3.29.22)
+
+#### Tasks Are Cloudy
+- Updated all references to the Task data to instead use AWS Amplify to access data in DynamoDB instead of in Room.
+
+#### Add Task Form
+- Modified `Add Task form` to save the data entered in as a Task to DynamoDB.
+
+#### Homepage
+- Refactored homepage’s RecyclerView to display all Task entities in DynamoDB.
+
+![Update Homepage](/images/update_homepage_lab32.png)
+
+
 
 ## Testing
 
@@ -118,3 +136,4 @@ entering from the home screen.
 ## Resources/Citations
 
 - [Android Room](https://developer.android.com/jetpack/androidx/releases/room?gclid=CjwKCAjwrfCRBhAXEiwAnkmKmS76pDHGyIJ2E7n4UyzbyZA3NcjcUHTtf_i4ErfFFc7Eqj7KxJqYEhoCNIoQAvD_BwE&gclsrc=aw.ds)
+- [Amplify Docs](https://aws-amplify.github.io/docs/)

@@ -61,7 +61,8 @@
         android:background="@drawable/bg_menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        android:baselineAligned="false">
 
         <LinearLayout
             android:paddingTop="24dp"
@@ -71,13 +72,15 @@
             android:orientation="horizontal"
             android:layout_weight="3"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent">
+            android:layout_width="match_parent"
+            android:baselineAligned="false">
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                tools:ignore="NestedWeights">
 
                 <LinearLayout
                     android:id="@+id/buttonAddTask"
@@ -88,20 +91,22 @@
 
                     android:background="@drawable/bg_green"
                     android:orientation="vertical"
-                    android:text="@string/add_task">
+                    android:text="@string/add_task"
+                    tools:ignore="UselessParent">
 
                     <ImageView
                         android:layout_marginTop="12dp"
-                        android:layout_marginLeft="12dp"
+                        android:layout_marginStart="12dp"
                         android:layout_marginBottom="18dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@android:drawable/ic_menu_add" />
+                        android:src="@android:drawable/ic_menu_add"
+                        android:contentDescription="@string/todo" />
                     <TextView
-                        android:layout_marginLeft="12dp"
+                        android:layout_marginStart="12dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Add Task"
+                        android:text="@string/add_task_title"
                         android:textColor="#FFF"
                         android:textSize="18sp"/>
                 </LinearLayout>
@@ -121,10 +126,56 @@
                 android:orientation="vertical"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                tools:ignore="NestedWeights">
 
                 <LinearLayout
                     android:id="@+id/buttonAllTask"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+
+                    android:background="@drawable/bg_blue"
+                    android:orientation="vertical"
+                    android:text="@string/add_task">
+
+                    <ImageView
+                        android:layout_marginTop="12dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginBottom="18dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@android:drawable/ic_menu_add" />
+                    <TextView
+                        android:layout_marginStart="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/all_tasks_title"
+                        android:textColor="#FFF"
+                        android:textSize="18sp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:orientation="horizontal"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:ignore="NestedWeights">
+
+                <LinearLayout
+                    android:id="@+id/buttonDeleteTask"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
                     android:layout_marginLeft="10dp"
@@ -136,21 +187,22 @@
 
                     <ImageView
                         android:layout_marginTop="12dp"
-                        android:layout_marginLeft="12dp"
+                        android:layout_marginStart="12dp"
                         android:layout_marginBottom="18dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@android:drawable/ic_menu_add" />
                     <TextView
-                        android:layout_marginLeft="12dp"
+                        android:layout_marginStart="12dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="All Tasks"
+                        android:text="@string/remove_tasks"
                         android:textColor="#FFF"
-                        android:textSize="18sp"/>
+                        android:textSize="16sp"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
+
 
 
     </LinearLayout>
