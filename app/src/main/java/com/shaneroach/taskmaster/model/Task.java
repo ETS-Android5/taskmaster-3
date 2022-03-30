@@ -1,18 +1,13 @@
 package com.shaneroach.taskmaster.model;
 
 
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
 import com.shaneroach.taskmaster.enums.TaskStatusEnum;
 
 import java.util.Date;
 
 
-@Entity
 public class Task {
 
-    @PrimaryKey(autoGenerate = true)
     Long id;
     String title;
     String body;

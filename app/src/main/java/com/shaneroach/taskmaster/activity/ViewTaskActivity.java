@@ -1,11 +1,12 @@
 package com.shaneroach.taskmaster.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.amplifyframework.datastore.generated.model.TaskStatusEnum;
 import com.shaneroach.taskmaster.R;
 
 public class ViewTaskActivity extends AppCompatActivity {
@@ -23,7 +24,7 @@ public class ViewTaskActivity extends AppCompatActivity {
         if (callingIntent != null){
             taskTitleString = callingIntent.getStringExtra(HomeActivity.TASK_TITLE_TAG);
             taskBodyString = callingIntent.getStringExtra(HomeActivity.TASK_BODY_TAG);
-            taskStateEnum = callingIntent.getStringExtra(String.valueOf(HomeActivity.TASK_STATE_TAG));
+            taskStateEnum = callingIntent.getStringExtra(HomeActivity.TASK_STATE_TAG);
         }
 
         TextView taskViewTitleView = (TextView) findViewById(R.id.textTaskViewTitle);

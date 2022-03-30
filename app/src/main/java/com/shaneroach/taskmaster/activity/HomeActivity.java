@@ -1,25 +1,27 @@
 package com.shaneroach.taskmaster.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.view.View;
-import android.widget.Button;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.amplifyframework.api.graphql.model.ModelMutation;
+import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.core.model.temporal.Temporal;
+import com.amplifyframework.datastore.generated.model.Task;
 import com.shaneroach.taskmaster.R;
 import com.shaneroach.taskmaster.adapter.TaskListRecycleReviewAdapter;
-import com.shaneroach.taskmaster.database.TaskMasterDatabase;
 import com.shaneroach.taskmaster.enums.TaskStatusEnum;
-import com.shaneroach.taskmaster.model.Task;
+
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,10 +31,9 @@ public class HomeActivity extends AppCompatActivity {
     public static final String TASK_TITLE_TAG = "TASK";
     public static final String TASK_BODY_TAG = "BODY";
     public static final String TASK_STATE_TAG = "STATE";
-    public static final String USER_USERNAME_TAG = "userUsername";
+    public final String TAG = "MESSAGE";
     SharedPreferences preferences;
     TaskListRecycleReviewAdapter adapter;
-    TaskMasterDatabase taskMasterDatabase;
     List<Task> tasks = null;
 
 
@@ -42,15 +43,8 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        taskMasterDatabase = Room.databaseBuilder(
-                getApplicationContext(),
-                TaskMasterDatabase.class,
-                "shane_task_master")
-                .allowMainThreadQueries()
-                .fallbackToDestructiveMigration()
-                .build();
+        tasks = new ArrayList<>();
 
-        tasks = taskMasterDatabase.taskDao().findAll();
 
         setUpAddTaskButton();
         setUpAllTasksButton();
@@ -65,17 +59,30 @@ public class HomeActivity extends AppCompatActivity {
         super.onResume();
         String userUsername = preferences.getString(UserSettingsActivity.USER_USERNAME_TAG,"No Username");
         ((TextView) findViewById(R.id.textHomeUsernameView)).setText(getString(R.string.username_with_input, userUsername));
+        Amplify.API.query(
+                ModelQuery.list(Task.class),
+                success -> {
+                    Log.i(TAG, "Updated Tasks Successfully!");
+                    tasks.clear();
+                    for(Task databaseTask : success.getData()){
+                        tasks.add(databaseTask);
+                    }
+                    runOnUiThread(() -> {
+                        adapter.notifyDataSetChanged();
+                    });
+                },
+
+
+                failure -> Log.i(TAG, "failed with this response: ")
+        );
     }
 
     private void setUpUserSettingsButton(){
         ImageView userSettingsImageView = (ImageView) findViewById(R.id.userSettingsImage);
 
-        userSettingsImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent goToUserSettingsIntent = new Intent(HomeActivity.this, UserSettingsActivity.class);
-                startActivity(goToUserSettingsIntent);
-            }
+        userSettingsImageView.setOnClickListener(view -> {
+            Intent goToUserSettingsIntent = new Intent(HomeActivity.this, UserSettingsActivity.class);
+            startActivity(goToUserSettingsIntent);
         });
     }
 
@@ -83,12 +90,9 @@ public class HomeActivity extends AppCompatActivity {
 
     private void setUpAllTasksButton(){
         LinearLayout buttonAllTask = findViewById(R.id.buttonAllTask);
-        buttonAllTask.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent goToAllTaskActivityIntent = new Intent(HomeActivity.this, AllTasksActivity.class);
-                startActivity(goToAllTaskActivityIntent);
-            }
+        buttonAllTask.setOnClickListener(view -> {
+            Intent goToAllTaskActivityIntent = new Intent(HomeActivity.this, AllTasksActivity.class);
+            startActivity(goToAllTaskActivityIntent);
         });
 
     }

@@ -1,25 +1,28 @@
 package com.shaneroach.taskmaster.activity;
 
-import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
-import com.google.android.material.snackbar.Snackbar;
+import com.amplifyframework.api.graphql.model.ModelMutation;
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.core.model.temporal.Temporal;
+import com.amplifyframework.datastore.generated.model.Task;
+import com.amplifyframework.datastore.generated.model.TaskStatusEnum;
 import com.shaneroach.taskmaster.R;
-import com.shaneroach.taskmaster.database.TaskMasterDatabase;
-import com.shaneroach.taskmaster.enums.TaskStatusEnum;
-import com.shaneroach.taskmaster.model.Task;
+
+
 
 import java.util.Date;
 
 public class AddTaskActivity extends AppCompatActivity {
-    TaskMasterDatabase taskMasterDatabase;
+
+    private static final String TAG = "TASK";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,31 +30,31 @@ public class AddTaskActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_task);
 
 
-
-
-        taskMasterDatabase = Room.databaseBuilder(
-                getApplicationContext(),
-                TaskMasterDatabase.class,
-                "shane_task_master")
-                .allowMainThreadQueries()
-                .fallbackToDestructiveMigration()
-                .build();
-
         Spinner taskStateSpinner = (Spinner) findViewById(R.id.editAddTaskStateSpinner);
         taskStateSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.preference_category, TaskStatusEnum.values()));
 
-        //Buttons
         Button addTaskButton = (Button) findViewById(R.id.buttonAddTaskTaskActivity);
         addTaskButton.setOnClickListener(v -> {
-            Task newTask = new Task(
-                    ((EditText)findViewById(R.id.editTextTaskTitle)).getText().toString(),
-                    ((EditText)findViewById(R.id.editTextTaskDescription)).getText().toString(),
-                    TaskStatusEnum.fromString(taskStateSpinner.getSelectedItem().toString()),
-                    new Date()
-                    );
 
-            taskMasterDatabase.taskDao().insertATask(newTask);
-            //Snackbar.make(findViewById(R.id.userSettingsActivity), "task saved!", Snackbar.LENGTH_SHORT).show();
+            String title = ((EditText)findViewById(R.id.editTextTaskTitle)).getText().toString();
+            String description = ((EditText)findViewById(R.id.editTextTaskDescription)).getText().toString();
+            String currentDateString = com.amazonaws.util.DateUtils.formatISO8601Date(new Date());
+
+
+            Task newTask = Task.builder()
+                    .title(title)
+                    .description(description)
+                    .dateCreated(new Temporal.DateTime(currentDateString))
+                    .taskStatusEnum((TaskStatusEnum) taskStateSpinner.getSelectedItem())
+                    .build();
+
+
+            Amplify.API.mutate(
+                ModelMutation.create(newTask),
+                successResponse -> Log.i(TAG, "Made a Task successfully!"),
+                failureResponse -> Log.i(TAG, "failed with this response: "+ failureResponse)
+        );
+
         });
     }
 }

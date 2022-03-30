@@ -11,7 +11,7 @@
         android:id="@+id/textViewAllTasksHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="All Tasks"
+        android:text="@string/all_tasks_two"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,5 +31,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewAllTasksHeader"
         app:srcCompat="@drawable/ic_launcher_foreground"
-        tools:srcCompat="@color/purple_500" />
+        tools:srcCompat="@color/purple_500"
+        android:contentDescription="@string/all_task_image" />
 </androidx.constraintlayout.widget.ConstraintLayout>
