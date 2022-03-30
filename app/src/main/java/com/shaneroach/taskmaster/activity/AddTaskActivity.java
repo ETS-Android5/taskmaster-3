@@ -53,7 +53,7 @@ public class AddTaskActivity extends AppCompatActivity {
                 ModelMutation.create(newTask),
                 successResponse -> Log.i(TAG, "Made a Task successfully!"),
                 failureResponse -> Log.i(TAG, "failed with this response: "+ failureResponse)
-        );
+            );
 
         });
     }
