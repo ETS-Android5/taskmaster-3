@@ -9,11 +9,11 @@
         <entry key="app/src/main/res/drawable/bg_menu.xml" value="0.162" />
         <entry key="app/src/main/res/drawable/bg_red.xml" value="0.1585" />
         <entry key="app/src/main/res/font/aldrich.xml" value="0.19010416666666666" />
-        <entry key="app/src/main/res/layout/activity_add_task.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_add_task.xml" value="0.29087524414062504" />
         <entry key="app/src/main/res/layout/activity_all_tasks.xml" value="0.27583469999009286" />
         <entry key="app/src/main/res/layout/activity_alltask.xml" value="0.1659637451171875" />
         <entry key="app/src/main/res/layout/activity_alltasks.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_home.xml" value="0.25056457519531244" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.5583114624023438" />
         <entry key="app/src/main/res/layout/activity_task.xml" value="0.25171661376953125" />
         <entry key="app/src/main/res/layout/activity_user_settings.xml" value="0.3093933105468749" />
         <entry key="app/src/main/res/layout/activity_view_task.xml" value="0.2520833333333333" />

@@ -25,5 +25,6 @@
     <string name="total_tasks_0">Total Tasks: 0</string>
     <string name="task_name">Task Name</string>
     <string name="task_description">Task Description</string>
+    <string name="team_name_with_input">"Team: %1$s"</string>
 
 </resources>
