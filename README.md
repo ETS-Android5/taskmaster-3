@@ -18,12 +18,12 @@ An android application that allows you to keep track of all your tasks.
 
 ### Add a task
 
-- User can add a task with a given title, description, and status. This will be added to the users current task list.
+- User can add a task with a given title, description, status, and team. This will be added to the users current task list.
 
 ### View a specific task
 
 - User can view a specific task from the homepage recycle view in detail, to find information about the description and status.
-
+- User can specify which team they belong to. Homepage tasks will be filtered to show only those teams tasks.
 
 
 
@@ -36,15 +36,9 @@ An android application that allows you to keep track of all your tasks.
 
 - Added `Homepage` Page
 
-![Homepage](/images/homepage_lab26.png)
-
 - Added `Add a Task` Page
 
-![All Tasks](/images/allTasks_lab26.png)
-
 - Added `All Tasks` Page
-
-![Add Tasks](/images/addTask_lab26.png)
 
 ### Lab 27 (3.22.22)
 
@@ -52,30 +46,15 @@ An android application that allows you to keep track of all your tasks.
 
 - Added `Settings Page`
 
-![settings](/images/settingsPage_lab27.png)
-
 - Added `Task Detail Page`
 
-![view Task 1](/images/viewTask1_lab27.png)
-
-![view Task 2](/images/viewTask2_lab27.png)
-
 - Updated `Homepage`
-
-![update Homepage](/images/homepage_lab27.png)
-
 
 ### Lab 28 (3.23.22)
 
 - Added Task Model: A Task has a title, body, and taskStatusEnum.
 
-![viewTask_lab28](/images/viewTask_lab28.png)
-
 - Updated Homepage: Added a RecyclerView for displaying Task data. This has hardcoded tasks for now.
-
-![update Homepage](/images/update_homepage_lab28.png)
-
-![scroll Homepage](/images/scroll_homepage_lab28.png)
 
 ### Lab 29 (3.24.22)
 
@@ -122,6 +101,24 @@ An android application that allows you to keep track of all your tasks.
 
 ![Update Homepage](/images/update_homepage_lab32.png)
 
+
+### Lab 33 (3.30.22)
+
+#### Tasks Are Owned By Teams
+- Updated tasks to be owned by teams.
+- Three default teams have been made; elves, robots, and humans.
+
+![Update Homepage](/images/tasksWithTeams_lab33.png)
+
+#### Add Task From
+- Spinner used to select a team when creating a task was added.
+
+![Update Homepage](/images/update_addTask_lab33.png)
+
+#### Settings Page
+- Added ability to allow users to choose a team, and filter the tasks on the homepage corresponding to the chosen team.
+
+![Update Homepage](/images/update_userSettings_lab33.png)
 
 
 ## Testing
