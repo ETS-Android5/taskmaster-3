@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginBottom="8dp"
-        android:text="Username"
+        android:text="@string/username"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toTopOf="@+id/editTextUserSettingsUsername"
         app:layout_constraintStart_toStartOf="parent" />
@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
-        android:text="Team"
+        android:text="@string/team"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toTopOf="@+id/spinnerUserSettingsTeam"
         app:layout_constraintStart_toStartOf="parent" />
@@ -48,7 +48,7 @@
         android:autofillHints=""
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="What is your code name?"
+        android:text="@string/username"
         android:textColor="#151515"
         android:textColorHint="#E1E1E1"
         app:layout_constraintEnd_toEndOf="parent"

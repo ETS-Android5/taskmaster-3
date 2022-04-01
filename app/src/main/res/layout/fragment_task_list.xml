@@ -10,7 +10,7 @@
         android:id="@+id/taskFragmentTextViewHome"
         android:layout_width="315dp"
         android:layout_height="70dp"
-        android:text="Blank Task "
+        android:text="@string/blank"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="#FFF" />
 
