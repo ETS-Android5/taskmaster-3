@@ -73,6 +73,7 @@ public class AddTaskActivity extends AppCompatActivity {
                 Log.e(TAG, "ExecutionException while getting teams.");
             }
 
+            assert teams != null;
             Team selectedTeam = teams.stream().filter(c -> c.getName().equals(selectedTeamString)).findAny().orElseThrow(RuntimeException::new);
 
             Task newTask = Task.builder()
@@ -110,13 +111,11 @@ public class AddTaskActivity extends AppCompatActivity {
                     }
                     teamsFuture.complete(teams);
 
-                    runOnUiThread(() -> {
-                        teamSpinner.setAdapter(new ArrayAdapter<>(
-                                this,
-                                android.R.layout.preference_category,
-                                teamNames
-                        ));
-                    });
+                    runOnUiThread(() -> teamSpinner.setAdapter(new ArrayAdapter<>(
+                            this,
+                            android.R.layout.preference_category,
+                            teamNames
+                    )));
                 },
                 failure -> {
                     teamsFuture.complete(null);

@@ -14,25 +14,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
-import com.amplifyframework.core.model.temporal.Temporal;
 import com.amplifyframework.datastore.generated.model.Task;
-import com.amplifyframework.datastore.generated.model.Team;
 import com.shaneroach.taskmaster.R;
 import com.shaneroach.taskmaster.adapter.TaskListRecycleReviewAdapter;
-import com.shaneroach.taskmaster.enums.TaskStatusEnum;
-
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
     public static final String TASK_TITLE_TAG = "TASK";
     public static final String TASK_BODY_TAG = "BODY";
     public static final String TASK_STATE_TAG = "STATE";
+    public static final String TASK_ID_TAG = "Task ID Tag";
     public final String TAG = "MESSAGE";
     SharedPreferences preferences;
     TaskListRecycleReviewAdapter adapter;
@@ -46,42 +41,6 @@ public class HomeActivity extends AppCompatActivity {
 
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         tasks = new ArrayList<>();
-
-
-//        Team team1 =
-//                Team.builder()
-//                .name("Robots")
-//                .build();
-//
-//        Amplify.API.mutate(
-//                ModelMutation.create(team1),
-//                successResponse -> Log.i(TAG, "Made a new Team of Robots!"),
-//                failureResponse -> Log.i(TAG, "Failed to make team of Robots.")
-//        );
-//
-//
-//        Team team2 =
-//                Team.builder()
-//                        .name("Humans")
-//                        .build();
-//
-//        Amplify.API.mutate(
-//                ModelMutation.create(team2),
-//                successResponse -> Log.i(TAG, "Made a new Team of Humans!"),
-//                failureResponse -> Log.i(TAG, "Failed to make team Humans.")
-//        );
-//
-//
-//        Team team3 =
-//                Team.builder()
-//                        .name("Elves")
-//                        .build();
-//
-//        Amplify.API.mutate(
-//                ModelMutation.create(team3),
-//                successResponse -> Log.i(TAG, "Made a new Team of Elves!"),
-//                failureResponse -> Log.i(TAG, "Failed to make team Elves.")
-//        );
 
         setUpAddTaskButton();
         setUpAllTasksButton();
@@ -113,9 +72,7 @@ public class HomeActivity extends AppCompatActivity {
                             tasks.add(databaseTask);
                         }
                     }
-                    runOnUiThread(() -> {
-                        adapter.notifyDataSetChanged();
-                    });
+                    runOnUiThread(() -> adapter.notifyDataSetChanged());
                 },
 
                 failure -> Log.i(TAG, "failed with this response: ")

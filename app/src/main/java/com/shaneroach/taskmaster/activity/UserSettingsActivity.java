@@ -1,11 +1,9 @@
 package com.shaneroach.taskmaster.activity;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,30 +36,24 @@ public class UserSettingsActivity extends AppCompatActivity {
 
         setUpTeamSpinner();
 
-
-        String userTeamName = preferences.getString(USER_TEAM_NAME_TAG,"");
         String userUsername = preferences.getString(USER_USERNAME_TAG,"");
         if (!userUsername.isEmpty()) {
-            EditText userUsernameEditText = (EditText) findViewById(R.id.editTextUserSettingsUsername);
+            EditText userUsernameEditText = findViewById(R.id.editTextUserSettingsUsername);
             userUsernameEditText.setText(userUsername);
         }
 
 
         Button saveButton = findViewById(R.id.buttonUserSettingsSaveUsername);
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SharedPreferences.Editor preferencesEditor = preferences.edit();
-                EditText userUsernameEditText = (EditText) findViewById(R.id.editTextUserSettingsUsername);
-                String userUsernameString = userUsernameEditText.getText().toString();
-                String userTeamNameString = teamSpinner.getSelectedItem().toString();
-                preferencesEditor.putString(USER_USERNAME_TAG, userUsernameString);
-                preferencesEditor.putString(USER_TEAM_NAME_TAG, userTeamNameString);
-                preferencesEditor.apply();
-                Snackbar.make(findViewById(R.id.userSettingsActivity), "User Settings Saved!", Snackbar.LENGTH_SHORT).show();
-            }
-
+        saveButton.setOnClickListener(view -> {
+            SharedPreferences.Editor preferencesEditor = preferences.edit();
+            EditText userUsernameEditText = findViewById(R.id.editTextUserSettingsUsername);
+            String userUsernameString = userUsernameEditText.getText().toString();
+            String userTeamNameString = teamSpinner.getSelectedItem().toString();
+            preferencesEditor.putString(USER_USERNAME_TAG, userUsernameString);
+            preferencesEditor.putString(USER_TEAM_NAME_TAG, userTeamNameString);
+            preferencesEditor.apply();
+            Snackbar.make(findViewById(R.id.userSettingsActivity), "User Settings Saved!", Snackbar.LENGTH_SHORT).show();
         });
 
 
@@ -69,7 +61,7 @@ public class UserSettingsActivity extends AppCompatActivity {
 
     private void setUpTeamSpinner() {
 
-        teamSpinner = (Spinner) findViewById(R.id.spinnerUserSettingsTeam);
+        teamSpinner = findViewById(R.id.spinnerUserSettingsTeam);
 
         Amplify.API.query(
                 ModelQuery.list(Team.class),
@@ -81,17 +73,13 @@ public class UserSettingsActivity extends AppCompatActivity {
                         teamNames.add(team.getName());
                         teams.add(team);
                     }
-                    runOnUiThread(() -> {
-                        teamSpinner.setAdapter(new ArrayAdapter<>(
-                                this,
-                                android.R.layout.preference_category,
-                                teamNames
-                        ));
-                    });
+                    runOnUiThread(() -> teamSpinner.setAdapter(new ArrayAdapter<>(
+                            this,
+                            android.R.layout.preference_category,
+                            teamNames
+                    )));
                 },
-                failure -> {
-                    Log.i(TAG, "Failed to add team names!");
-                }
+                failure -> Log.i(TAG, "Failed to add team names!")
         );
 
     }

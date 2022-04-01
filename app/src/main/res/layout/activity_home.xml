@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="28dp"
+        android:contentDescription="@string/image_tool"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_manage" />
@@ -92,7 +93,7 @@
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                tools:ignore="NestedWeights">
+                tools:ignore="NestedWeights,UselessParent">
 
                 <LinearLayout
                     android:id="@+id/buttonAddTask"
@@ -132,14 +133,15 @@
             android:orientation="horizontal"
             android:layout_weight="3"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent">
+            android:layout_width="match_parent"
+            android:baselineAligned="false">
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                tools:ignore="NestedWeights">
+                tools:ignore="NestedWeights,UselessParent">
 
                 <LinearLayout
                     android:id="@+id/buttonAllTask"
@@ -158,7 +160,8 @@
                         android:layout_marginBottom="18dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@android:drawable/ic_menu_add" />
+                        android:src="@android:drawable/ic_menu_add"
+                        tools:ignore="ContentDescription" />
                     <TextView
                         android:layout_marginStart="12dp"
                         android:layout_width="wrap_content"
@@ -177,14 +180,15 @@
             android:orientation="horizontal"
             android:layout_weight="3"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent">
+            android:layout_width="match_parent"
+            android:baselineAligned="false">
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                tools:ignore="NestedWeights">
+                tools:ignore="NestedWeights,UselessParent">
 
                 <LinearLayout
                     android:id="@+id/buttonDeleteTask"
@@ -203,7 +207,9 @@
                         android:layout_marginBottom="18dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@android:drawable/ic_menu_add" />
+                        android:src="@android:drawable/ic_menu_add"
+                        android:contentDescription="@string/todo"
+                        tools:ignore="ContentDescription" />
                     <TextView
                         android:layout_marginStart="12dp"
                         android:layout_width="wrap_content"

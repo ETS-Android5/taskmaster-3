@@ -1,7 +1,5 @@
 package com.shaneroach.taskmaster;
 
-import static android.content.ContentValues.TAG;
-
 import android.app.Application;
 import android.util.Log;
 

@@ -16,15 +16,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.datastore.generated.model.Task;
-import com.amplifyframework.datastore.generated.model.TaskStatusEnum;
 import com.shaneroach.taskmaster.R;
+import com.shaneroach.taskmaster.activity.HomeActivity;
 import com.shaneroach.taskmaster.activity.ViewTaskActivity;
-
 
 import java.util.List;
 
 public class TaskListRecycleReviewAdapter extends RecyclerView.Adapter<TaskListRecycleReviewAdapter.TaskListViewHolder> {
-
     List<Task> taskList;
     Context callingActivity;
 
@@ -48,17 +46,18 @@ public class TaskListRecycleReviewAdapter extends RecyclerView.Adapter<TaskListR
         String taskTitle = taskList.get(position).getTitle();
         String taskBody = taskList.get(position).getDescription();
         String taskState = taskList.get(position).getTaskStatusEnum().toString();
+        Task task = taskList.get(position);
 
 
         View taskViewHolder = holder.itemView;
         taskViewHolder.setOnClickListener(view -> {
             Intent goToViewTaskFormIntent = new Intent(callingActivity, ViewTaskActivity.class);
-            goToViewTaskFormIntent.putExtra(TASK_BODY_TAG, taskBody);
-            goToViewTaskFormIntent.putExtra(TASK_TITLE_TAG, taskTitle);
-            goToViewTaskFormIntent.putExtra(TASK_STATE_TAG, taskState);
+            goToViewTaskFormIntent.putExtra(TASK_BODY_TAG, task.getDescription());
+            goToViewTaskFormIntent.putExtra(TASK_TITLE_TAG, task.getTitle());
+            goToViewTaskFormIntent.putExtra(TASK_STATE_TAG, task.getTaskStatusEnum().toString());
+            goToViewTaskFormIntent.putExtra(HomeActivity.TASK_ID_TAG, task.getId());
             callingActivity.startActivity(goToViewTaskFormIntent);
         });
-
     }
 
     @Override

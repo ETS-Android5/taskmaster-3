@@ -25,14 +25,18 @@ An android application that allows you to keep track of all your tasks.
 - User can view a specific task from the homepage recycle view in detail, to find information about the description and status.
 - User can specify which team they belong to. Homepage tasks will be filtered to show only those teams tasks.
 
+### Edit a Task
+
+- User can edit a task.
+- User can choose to delete a task.
+
+
 
 
 ## Change Log
 
 
 ### Lab 26 (3.21.22)
-
-
 
 - Added `Homepage` Page
 
@@ -41,8 +45,6 @@ An android application that allows you to keep track of all your tasks.
 - Added `All Tasks` Page
 
 ### Lab 27 (3.22.22)
-
-
 
 - Added `Settings Page`
 
@@ -60,18 +62,9 @@ An android application that allows you to keep track of all your tasks.
 
 - Added `Add Task Form`
 
-![add task form](/images/add_task_lab29.png)
-
 - Updated `Homepage`
 
-![add task form](/images/update_homepage_lab29.png)
-
-![add task form](/images/update_homepage_2_lab29.png)
-
 - Updated `View Task Page` to display a tasks title, description, and status.
-
-![add task form](/images/view_task_lab29.png)
-
 
 ### Lab 31 (3.28.22)
 
@@ -110,7 +103,7 @@ An android application that allows you to keep track of all your tasks.
 
 ![Update Homepage](/images/tasksWithTeams_lab33.png)
 
-#### Add Task From
+#### Add Task Form
 - Spinner used to select a team when creating a task was added.
 
 ![Update Homepage](/images/update_addTask_lab33.png)
@@ -119,6 +112,25 @@ An android application that allows you to keep track of all your tasks.
 - Added ability to allow users to choose a team, and filter the tasks on the homepage corresponding to the chosen team.
 
 ![Update Homepage](/images/update_userSettings_lab33.png)
+
+
+### Lab 33 (3.30.22)
+
+#### Added `Edit a Task` Form
+- Added new task form to edit a Task
+- Added functionality to delete a Task on the  `Edit Task Form`
+
+![Added Edit A Task](/images/added_editTask_lab34.png)
+
+#### Updated `View Task`
+- Added button on page to allow you to edit the viewed task.
+
+![Updated View A Task](/images/update_viewTask_lab34.png)
+
+
+#### Publish to Google Play
+
+- WIP
 
 
 ## Testing

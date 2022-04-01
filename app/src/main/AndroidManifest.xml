@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".activity.EditTaskActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.UserSettingsActivity"
             android:exported="false"
             android:parentActivityName=".activity.HomeActivity" />
