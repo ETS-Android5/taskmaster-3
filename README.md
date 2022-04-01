@@ -25,7 +25,7 @@ An android application that allows you to keep track of all your tasks.
 - User can view a specific task from the homepage recycle view in detail, to find information about the description and status.
 - User can specify which team they belong to. Homepage tasks will be filtered to show only those teams tasks.
 
-### Edit a Task
+### Edit a task
 
 - User can edit a task.
 - User can choose to delete a task.
@@ -34,7 +34,6 @@ An android application that allows you to keep track of all your tasks.
 
 
 ## Change Log
-
 
 ### Lab 26 (3.21.22)
 
@@ -60,23 +59,27 @@ An android application that allows you to keep track of all your tasks.
 
 ### Lab 29 (3.24.22)
 
-- Added `Add Task Form`
+#### Added `Add Task Form`
+- Users can now add tasks with a title, description, and status.
 
-- Updated `Homepage`
+#### Updated `Homepage`
 
-- Updated `View Task Page` to display a tasks title, description, and status.
+
+#### Updated `View Task Page`
+- Users can now view a given task with a title, description, and status.
 
 ### Lab 31 (3.28.22)
 
+#### General Application Maintenance
 - Ensured espresso tests are functional.
-- Refactored Main Activity
-- Added styling to UI
+- Refactored Main Activity.
+- Added styling to UI.
 
-- Updated `Homepage`
+#### Updated `Homepage`
 
 ![Update Homepage](/images/update_homepage_lab31.png)
 
-- Updated `View Task`
+#### Updated `View Task`
 
 ![Update ViewTask](/images/update_viewTask_lab31.png)
 
@@ -86,10 +89,10 @@ An android application that allows you to keep track of all your tasks.
 #### Tasks Are Cloudy
 - Updated all references to the Task data to instead use AWS Amplify to access data in DynamoDB instead of in Room.
 
-#### Add Task Form
+#### Updated `Add Task Form`
 - Modified `Add Task form` to save the data entered in as a Task to DynamoDB.
 
-#### Homepage
+#### Updated `Homepage`
 - Refactored homepage’s RecyclerView to display all Task entities in DynamoDB.
 
 ![Update Homepage](/images/update_homepage_lab32.png)
@@ -103,18 +106,18 @@ An android application that allows you to keep track of all your tasks.
 
 ![Update Homepage](/images/tasksWithTeams_lab33.png)
 
-#### Add Task Form
+#### Updated `Add Task Form`
 - Spinner used to select a team when creating a task was added.
 
 ![Update Homepage](/images/update_addTask_lab33.png)
 
-#### Settings Page
+#### Updated `Settings Page`
 - Added ability to allow users to choose a team, and filter the tasks on the homepage corresponding to the chosen team.
 
 ![Update Homepage](/images/update_userSettings_lab33.png)
 
 
-### Lab 33 (3.30.22)
+### Lab 34 (3.31.22)
 
 #### Added `Edit a Task` Form
 - Added new task form to edit a Task
@@ -126,7 +129,6 @@ An android application that allows you to keep track of all your tasks.
 - Added button on page to allow you to edit the viewed task.
 
 ![Updated View A Task](/images/update_viewTask_lab34.png)
-
 
 #### Publish to Google Play
 
