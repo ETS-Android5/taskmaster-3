@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,6 +17,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.auth.AuthUser;
+import com.amplifyframework.auth.AuthUserAttribute;
+import com.amplifyframework.auth.AuthUserAttributeKey;
+import com.amplifyframework.auth.options.AuthSignUpOptions;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Task;
 import com.shaneroach.taskmaster.R;
@@ -44,31 +50,78 @@ public class HomeActivity extends AppCompatActivity {
 
         setUpAddTaskButton();
         setUpAllTasksButton();
+        setUpLoginButton();
+        setUpSignOutButton();
         setUpUserSettingsButton();
         setUpTaskListRecycleView();
     }
 
 
-
     @SuppressLint("NotifyDataSetChanged")
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
-        String userUsername = preferences.getString(UserSettingsActivity.USER_USERNAME_TAG,"No Username");
+
         String userTeamName = preferences.getString(UserSettingsActivity.USER_TEAM_NAME_TAG, "No Team");
-        ((TextView) findViewById(R.id.textHomeUsernameView)).setText(getString(R.string.username_with_input, userUsername));
         ((TextView) findViewById(R.id.textHomeTeamNameView)).setText(getString(R.string.team_name_with_input, userTeamName));
+
+
+        AuthUser authUser = Amplify.Auth.getCurrentUser();
+        String username = "";
+        if (authUser == null)
+        {
+            String userUsername = preferences.getString(UserSettingsActivity.USER_USERNAME_TAG, "No Username");
+            ((TextView) findViewById(R.id.textHomeUsernameView)).setVisibility(View.INVISIBLE);
+            LinearLayout loginButton = findViewById(R.id.buttonToLoginTask);
+            loginButton.setVisibility(View.VISIBLE);
+            LinearLayout logoutButton = findViewById(R.id.buttonToSignOut);
+            logoutButton.setVisibility(View.INVISIBLE);
+        }
+        else  // authUser is not null
+        {
+            Log.i(TAG, "Username is: " + username);
+            LinearLayout loginButton = findViewById(R.id.buttonToLoginTask);
+            loginButton.setVisibility(View.INVISIBLE);
+            LinearLayout logoutButton = findViewById(R.id.buttonToSignOut);
+            logoutButton.setVisibility(View.VISIBLE);
+
+            // Not strictly required for your lab, but useful for your project
+            Amplify.Auth.fetchUserAttributes(
+                    success ->
+                    {
+                        Log.i(TAG, "Fetch user attributes succeeded for username: " + username);
+
+                        for (AuthUserAttribute userAttribute : success)
+                        {
+                            if (userAttribute.getKey().getKeyString().equals("nickname"))
+                            {
+                                String userNickname = userAttribute.getValue();
+                                runOnUiThread(() ->
+                                        {
+                                            ((TextView) findViewById(R.id.textHomeUsernameView)).setText(userNickname);
+                                            ((TextView) findViewById(R.id.textHomeUsernameView)).setVisibility(View.VISIBLE);
+                                        }
+                                );
+                            }
+                        }
+                    },
+                    failure ->
+                    {
+                        Log.i(TAG, "Fetch user attributes failed: " + failure.toString());
+                    }
+            );
+        }
+
 
         Amplify.API.query(
                 ModelQuery.list(Task.class),
                 success -> {
                     Log.i(TAG, "Updated Tasks Successfully!");
                     tasks.clear();
-                    for(Task databaseTask : success.getData()){
-                        if (userTeamName.equals("No Team")){
-                           tasks.add(databaseTask);
-                        }
-                        else if (databaseTask.getTeamName().getName().equals(userTeamName)) {
+                    for (Task databaseTask : success.getData()) {
+                        if (userTeamName.equals("No Team")) {
+                            tasks.add(databaseTask);
+                        } else if (databaseTask.getTeamName().getName().equals(userTeamName)) {
                             tasks.add(databaseTask);
                         }
                     }
@@ -79,7 +132,7 @@ public class HomeActivity extends AppCompatActivity {
         );
     }
 
-    private void setUpUserSettingsButton(){
+    private void setUpUserSettingsButton() {
         ImageView userSettingsImageView = (ImageView) findViewById(R.id.userSettingsImage);
 
         userSettingsImageView.setOnClickListener(view -> {
@@ -89,8 +142,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
-
-    private void setUpAllTasksButton(){
+    private void setUpAllTasksButton() {
         LinearLayout buttonAllTask = findViewById(R.id.buttonAllTask);
         buttonAllTask.setOnClickListener(view -> {
             Intent goToAllTaskActivityIntent = new Intent(HomeActivity.this, AllTasksActivity.class);
@@ -99,7 +151,7 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    private void setUpAddTaskButton(){
+    private void setUpAddTaskButton() {
         LinearLayout buttonAddTask = findViewById(R.id.buttonAddTask);
         buttonAddTask.setOnClickListener(view -> {
             Intent goToAddTaskActivity = new Intent(HomeActivity.this, AddTaskActivity.class);
@@ -117,5 +169,44 @@ public class HomeActivity extends AppCompatActivity {
 
         adapter = new TaskListRecycleReviewAdapter(tasks, this);
         taskListRecycleReview.setAdapter(adapter);
+    }
+
+    private void setUpLoginButton() {
+        LinearLayout buttonAddTask = findViewById(R.id.buttonToLoginTask);
+
+        buttonAddTask.setOnClickListener(view -> {
+            Intent goToAddTaskActivity = new Intent(HomeActivity.this, LoginActivity.class);
+            startActivity(goToAddTaskActivity);
+        });
+    }
+
+    private void setUpSignOutButton(){
+
+        LinearLayout logoutButton = findViewById(R.id.buttonToSignOut);
+        logoutButton.setOnClickListener(v ->
+        {
+            Amplify.Auth.signOut(
+                    () ->
+                    {
+                        Log.i(TAG, "Logout succeeded!");
+                        runOnUiThread(() ->
+                                {
+                                    ((TextView) findViewById(R.id.textHomeUsernameView)).setText("");
+                                    ((TextView) findViewById(R.id.textHomeUsernameView)).setVisibility(View.INVISIBLE);
+
+                                }
+                        );
+                        Intent goToLogInIntent = new Intent(HomeActivity.this, LoginActivity.class);
+                        startActivity(goToLogInIntent);
+                    },
+                    failure ->
+                    {
+                        Log.i(TAG, "Logout failed: " + failure.toString());
+                        runOnUiThread(() ->
+                        {
+                        });
+                    }
+            );
+        });
     }
 }

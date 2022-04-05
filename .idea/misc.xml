@@ -4,21 +4,26 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/addtask.xml" value="0.162" />
+        <entry key="app/src/main/res/drawable/bg_addtask.xml" value="0.2005" />
         <entry key="app/src/main/res/drawable/bg_blue.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/bg_bluetwo.xml" value="0.1695" />
         <entry key="app/src/main/res/drawable/bg_green.xml" value="0.162" />
         <entry key="app/src/main/res/drawable/bg_menu.xml" value="0.162" />
         <entry key="app/src/main/res/drawable/bg_red.xml" value="0.1585" />
         <entry key="app/src/main/res/font/aldrich.xml" value="0.19010416666666666" />
-        <entry key="app/src/main/res/layout/activity_add_task.xml" value="0.29087524414062504" />
+        <entry key="app/src/main/res/layout/activity_add_task.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_all_tasks.xml" value="0.27583469999009286" />
         <entry key="app/src/main/res/layout/activity_alltask.xml" value="0.1659637451171875" />
         <entry key="app/src/main/res/layout/activity_alltasks.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_edit_task.xml" value="0.31742960611979165" />
-        <entry key="app/src/main/res/layout/activity_home.xml" value="0.5583114624023438" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.2703536987304687" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.2945704142252604" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.31567028985507245" />
         <entry key="app/src/main/res/layout/activity_task.xml" value="0.25171661376953125" />
         <entry key="app/src/main/res/layout/activity_user_settings.xml" value="0.3093933105468749" />
+        <entry key="app/src/main/res/layout/activity_verify_account.xml" value="0.3020833333333333" />
         <entry key="app/src/main/res/layout/activity_view_task.xml" value="0.2520833333333333" />
-        <entry key="app/src/main/res/layout/fragment_task_list.xml" value="0.23743336995442704" />
+        <entry key="app/src/main/res/layout/fragment_task_list.xml" value="0.20557556152343753" />
       </map>
     </option>
   </component>

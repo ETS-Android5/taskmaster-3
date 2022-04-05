@@ -30,6 +30,12 @@ An android application that allows you to keep track of all your tasks.
 - User can edit a task.
 - User can choose to delete a task.
 
+### User login
+
+- User can signup or login with an existing account.
+- User can see their username on `homepage`
+- User can signout once logged in.
+
 
 
 
@@ -133,6 +139,21 @@ An android application that allows you to keep track of all your tasks.
 #### Publish to Google Play
 
 - WIP
+
+
+### Lab 36 (4.4.22)
+
+#### Added `User Login`
+
+- Cognito has been added to the Amplify setup. A user login and signup flow has been
+integrated into th app. Once the user has succesfully logged in, their username is displayed
+at the top of the `homepage`.
+
+![Updated View A Task](/images/userLoginFlow_lab36.png)
+
+#### Added `User Logout`
+
+- Users can logout of the application.
 
 
 ## Testing

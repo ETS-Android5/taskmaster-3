@@ -10,9 +10,12 @@
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="213dp"
-        android:layout_height="63dp"
+        android:layout_width="209dp"
+        android:layout_height="61dp"
         android:text="@string/my_tasks"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textAllCaps="true"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         android:textColor="#FFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -57,9 +60,11 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/homeTaskRecycleView"
-        android:layout_width="301dp"
-        android:layout_height="220dp"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
         android:layout_marginTop="36dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:textColor="#FFF"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,27 +77,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_menu"
+        android:baselineAligned="false"
+        android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:baselineAligned="false">
+        app:layout_constraintStart_toStartOf="parent">
+
 
         <LinearLayout
-            android:paddingTop="24dp"
-            android:paddingBottom="24dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:orientation="horizontal"
-            android:layout_weight="3"
-            android:layout_height="wrap_content"
+
             android:layout_width="match_parent"
-            android:baselineAligned="false">
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingLeft="16dp"
+            android:paddingTop="24dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="24dp">
 
             <LinearLayout
-                android:orientation="vertical"
-                android:layout_weight="1"
+
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
                 tools:ignore="NestedWeights,UselessParent">
 
                 <LinearLayout
@@ -103,44 +112,49 @@
                     android:layout_marginRight="10dp"
 
                     android:background="@drawable/bg_green"
+                    android:elevation="10dp"
                     android:orientation="vertical"
-                    android:text="@string/add_task"
-                    tools:ignore="UselessParent">
+                    android:text="@string/add_task">
 
                     <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
                         android:layout_marginTop="12dp"
-                        android:layout_marginStart="12dp"
+                        android:layout_gravity="center"
                         android:layout_marginBottom="18dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@android:drawable/ic_menu_add"
-                        android:contentDescription="@string/todo" />
+                        android:contentDescription="@string/todo"
+                        android:src="@android:drawable/ic_menu_add" />
+
                     <TextView
-                        android:layout_marginStart="12dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:textAlignment="center"
+                        android:gravity="center"
                         android:text="@string/add_task_title"
                         android:textColor="#FFF"
-                        android:textSize="18sp"/>
+                        android:textSize="14sp" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
+
         <LinearLayout
-            android:paddingTop="24dp"
-            android:paddingBottom="24dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:orientation="horizontal"
-            android:layout_weight="3"
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:baselineAligned="false">
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingLeft="16dp"
+            android:paddingTop="24dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="24dp">
 
             <LinearLayout
-                android:orientation="vertical"
-                android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
                 tools:ignore="NestedWeights,UselessParent">
 
                 <LinearLayout
@@ -149,78 +163,122 @@
                     android:layout_height="120dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-
                     android:background="@drawable/bg_blue"
+                    android:elevation="10dp"
                     android:orientation="vertical"
+
                     android:text="@string/add_task">
 
                     <ImageView
-                        android:layout_marginTop="12dp"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginBottom="18dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="18dp"
                         android:src="@android:drawable/ic_menu_add"
                         tools:ignore="ContentDescription" />
+
                     <TextView
-                        android:layout_marginStart="12dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:textAlignment="center"
+                        android:gravity="center"
                         android:text="@string/all_tasks_title"
                         android:textColor="#FFF"
-                        android:textSize="18sp"/>
+                        android:textSize="14sp" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-        <LinearLayout
-            android:paddingTop="24dp"
-            android:paddingBottom="24dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:orientation="horizontal"
-            android:layout_weight="3"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:baselineAligned="false">
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_weight="1"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingLeft="16dp"
+            android:paddingTop="24dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="24dp">
+
+
+            <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
                 tools:ignore="NestedWeights,UselessParent">
 
                 <LinearLayout
-                    android:id="@+id/buttonDeleteTask"
+                    android:id="@+id/buttonToLoginTask"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-
-                    android:background="@drawable/bg_red"
+                    android:visibility="visible"
+                    android:background="@drawable/bg_bluetwo"
+                    android:elevation="10dp"
                     android:orientation="vertical"
                     android:text="@string/add_task">
 
                     <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
                         android:layout_marginTop="12dp"
-                        android:layout_marginStart="12dp"
                         android:layout_marginBottom="18dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@android:drawable/ic_menu_add"
                         android:contentDescription="@string/todo"
+                        android:src="@android:drawable/ic_menu_add"
                         tools:ignore="ContentDescription" />
+
                     <TextView
-                        android:layout_marginStart="12dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/remove_tasks"
-                        android:textColor="#FFF"
-                        android:textSize="16sp"/>
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
+                        android:layout_marginStart="12dp"
+                        android:text="Login"
+                        android:textAlignment="center"
 
+                        android:textColor="#FFF"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/buttonToSignOut"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:visibility="invisible"
+                    android:background="@drawable/bg_red"
+                    android:elevation="10dp"
+                    android:orientation="vertical"
+                    android:text="@string/add_task">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="18dp"
+                        android:contentDescription="@string/todo"
+                        android:src="@android:drawable/ic_menu_add"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:text="Signout"
+                        android:textAlignment="center"
+                        android:textColor="#FFF"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </RelativeLayout>
+
+
+
+        </LinearLayout>
 
 
     </LinearLayout>
