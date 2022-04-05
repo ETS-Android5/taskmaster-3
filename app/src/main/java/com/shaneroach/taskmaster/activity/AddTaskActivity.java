@@ -5,6 +5,7 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -49,7 +50,7 @@ public class AddTaskActivity extends AppCompatActivity {
     }
 
     private void setUpSaveButtons() {
-        Button addTaskButton = (Button) findViewById(R.id.buttonAddTaskTaskActivity);
+        LinearLayout addTaskButton = findViewById(R.id.buttonAddTaskTaskActivity);
         addTaskButton.setOnClickListener(v -> {
 
             String title = ((EditText)findViewById(R.id.editTextTaskTitle)).getText().toString();

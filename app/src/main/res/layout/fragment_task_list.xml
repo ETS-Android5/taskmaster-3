@@ -1,17 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="318dp"
-    android:layout_height="75dp"
-    tools:context=".fragment.TaskListFragment">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:layout_margin="4dp"
+    tools:context=".fragment.TaskListFragment"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="6dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/taskFragmentTextViewHome"
-        android:layout_width="315dp"
-        android:layout_height="70dp"
-        android:text="@string/blank"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="#FFF" />
 
-</FrameLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:elevation="6dp"
+        android:padding="10dp"
+
+    >
+        <TextView
+            android:elevation="6dp"
+            android:textSize="26sp"
+
+            android:id="@+id/taskFragmentTextViewHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/blank"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+
+
+</androidx.cardview.widget.CardView>

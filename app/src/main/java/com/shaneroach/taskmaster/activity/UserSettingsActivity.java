@@ -7,6 +7,7 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,7 +44,7 @@ public class UserSettingsActivity extends AppCompatActivity {
         }
 
 
-        Button saveButton = findViewById(R.id.buttonUserSettingsSaveUsername);
+        LinearLayout saveButton = findViewById(R.id.buttonUserSettingsSaveUsername);
 
         saveButton.setOnClickListener(view -> {
             SharedPreferences.Editor preferencesEditor = preferences.edit();
