@@ -166,7 +166,7 @@ at the top of the `homepage`.
 - Users can optionally select a file to attach to a task.
 If a user attaches a file to a task, the file is uploaded to S3, and associated with that task.
 
-![Updated View A Task](/images/fileUpload_lab37.png)
+![Updated View A Task](/images/fileupload_lab37.png)
 
 #### Update `View Task` page
 
