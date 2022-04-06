@@ -1,9 +1,18 @@
 package com.shaneroach.taskmaster.activity;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.OpenableColumns;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -20,6 +29,8 @@ import com.amplifyframework.datastore.generated.model.Team;
 import com.google.android.material.snackbar.Snackbar;
 import com.shaneroach.taskmaster.R;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -36,6 +47,7 @@ public class EditTaskActivity extends AppCompatActivity {
     private EditText taskTitleEditText;
     Spinner taskStateSpinner = null;
     Spinner teamSpinner = null;
+    ActivityResultLauncher<Intent> activityResultLauncher;
 
 
     @Override
@@ -44,7 +56,10 @@ public class EditTaskActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_task);
         taskCompletableFuture = new CompletableFuture<>();
         teamsFuture = new CompletableFuture<>();
+        activityResultLauncher = getImagePickingActivityResultLauncher();
 
+
+        setUpAddImageButton();
         setUpUIElementsEdit();
         setUpSaveButton();
         setUpDeleteButton();
@@ -222,6 +237,116 @@ public class EditTaskActivity extends AppCompatActivity {
             }
         }
         return 0;
+    }
+
+
+    private void setUpAddImageButton()
+    {
+        Button addImageButton = (Button) findViewById(R.id.buttonSaveUploadImage);
+        addImageButton.setOnClickListener(b ->
+        {
+            launchImageSelectionIntent();
+        });
+    }
+
+
+
+    private void launchImageSelectionIntent()
+    {
+        // Part 1: Launch activity to pick file
+
+        Intent imageFilePickingIntent = new Intent(Intent.ACTION_GET_CONTENT);
+        imageFilePickingIntent.setType("*/*");  // only allow one kind or category of file; if you don't have this, you get a very cryptic error about "No activity found to handle Intent"
+        imageFilePickingIntent.putExtra(Intent.EXTRA_MIME_TYPES, new String[]{"image/jpeg", "image/png"});
+        // Below is simple version for testing
+        //startActivity(imageFilePickingIntent);
+
+        // Part 2: Create an image picking activity result launcher
+        activityResultLauncher.launch(imageFilePickingIntent);
+    }
+
+
+    private ActivityResultLauncher<Intent> getImagePickingActivityResultLauncher()
+    {
+        // Part 2: Create an image picking activity result launcher
+        ActivityResultLauncher<Intent> imagePickingActivityResultLauncher =
+                registerForActivityResult(
+                        new ActivityResultContracts.StartActivityForResult(),
+                        new ActivityResultCallback<ActivityResult>()
+                        {
+                            @Override
+                            public void onActivityResult(ActivityResult result)
+                            {
+                                if (result.getResultCode() == Activity.RESULT_OK)
+                                {
+                                    if (result.getData() != null)
+                                    {
+                                        Uri pickedImageFileUri = result.getData().getData();
+                                        try
+                                        {
+                                            InputStream pickedImageInputStream = getContentResolver().openInputStream(pickedImageFileUri);
+                                            String pickedImageFilename = getFileNameFromUri(pickedImageFileUri);
+                                            Log.i(TAG, "Succeeded in getting input stream from file on phone! Filename is: " + pickedImageFilename);
+                                            // Part 3: Use our InputStream to upload file to S3
+                                            uploadInputStreamToS3(pickedImageInputStream, pickedImageFilename);
+                                        } catch (FileNotFoundException fnfe)
+                                        {
+                                            Log.e(TAG, "Could not get file from file picker! " + fnfe.getMessage(), fnfe);
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    Log.e(TAG, "Activity result error in ActivityResultLauncher.onActivityResult");
+                                }
+                            }
+                        }
+                );
+
+        return imagePickingActivityResultLauncher;
+    }
+
+
+    private void uploadInputStreamToS3(InputStream pickedImageInputStream, String pickedImageFilename)
+    {
+        Amplify.Storage.uploadInputStream(
+                pickedImageFilename,  // S3 key
+                pickedImageInputStream,
+                success ->
+                {
+                    Log.i(TAG, "Succeeded in getting file uploaded to S3! Key is: " + success.getKey());
+                    // Part 4: Update/save our Product object to have an image key
+                    //saveTask(success.getKey());
+                    // TODO: Update ImageView on page to show the uploaded image properly (without having to go back)
+                },
+                failure ->
+                {
+                    Log.e(TAG, "Failure in uploading file to S3 with filename: " + pickedImageFilename + " with error: " + failure.getMessage());
+                }
+        );
+    }
+
+    @SuppressLint("Range")
+    public String getFileNameFromUri(Uri uri) {
+        String result = null;
+        if (uri.getScheme().equals("content")) {
+            Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+            try {
+                if (cursor != null && cursor.moveToFirst()) {
+                    result = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+                }
+            } finally {
+                cursor.close();
+            }
+        }
+        if (result == null) {
+            result = uri.getPath();
+            int cut = result.lastIndexOf('/');
+            if (cut != -1) {
+                result = result.substring(cut + 1);
+            }
+        }
+        return result;
     }
 
 }

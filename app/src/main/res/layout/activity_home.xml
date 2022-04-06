@@ -8,18 +8,27 @@
     tools:context=".activity.HomeActivity">
 
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/ic_launcher_foreground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="-2dp" />
+
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="209dp"
-        android:layout_height="61dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/my_tasks"
         android:gravity="center"
         android:textStyle="bold"
         android:textAllCaps="true"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         android:textColor="#FFF"
+        android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-
+        android:textSize="60sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

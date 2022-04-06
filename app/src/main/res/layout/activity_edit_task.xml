@@ -27,6 +27,14 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
+        android:id="@+id/buttonSaveUploadImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinnerEditTaskTeam"
+        android:text="Upload Image"
+        />
+
+    <Button
         android:id="@+id/buttonSaveEditTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

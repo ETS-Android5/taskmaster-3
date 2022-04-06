@@ -5,6 +5,7 @@ subscription OnCreateTask {
     title
     description
     dateCreated
+    taskImageS3Key
     taskStatusEnum
     teamId
     teamName {
@@ -12,12 +13,19 @@ subscription OnCreateTask {
       name
       tasks {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateTask {
@@ -26,6 +34,7 @@ subscription OnUpdateTask {
     title
     description
     dateCreated
+    taskImageS3Key
     taskStatusEnum
     teamId
     teamName {
@@ -33,12 +42,19 @@ subscription OnUpdateTask {
       name
       tasks {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteTask {
@@ -47,6 +63,7 @@ subscription OnDeleteTask {
     title
     description
     dateCreated
+    taskImageS3Key
     taskStatusEnum
     teamId
     teamName {
@@ -54,12 +71,19 @@ subscription OnDeleteTask {
       name
       tasks {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnCreateTeam {
@@ -72,15 +96,23 @@ subscription OnCreateTeam {
         title
         description
         dateCreated
+        taskImageS3Key
         taskStatusEnum
         teamId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateTeam {
@@ -93,15 +125,23 @@ subscription OnUpdateTeam {
         title
         description
         dateCreated
+        taskImageS3Key
         taskStatusEnum
         teamId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteTeam {
@@ -114,14 +154,22 @@ subscription OnDeleteTeam {
         title
         description
         dateCreated
+        taskImageS3Key
         taskStatusEnum
         teamId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }

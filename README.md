@@ -19,11 +19,14 @@ An android application that allows you to keep track of all your tasks.
 ### Add a task
 
 - User can add a task with a given title, description, status, and team. This will be added to the users current task list.
+- User can optionally upload an image file when creating a task.
+
 
 ### View a specific task
 
 - User can view a specific task from the homepage recycle view in detail, to find information about the description and status.
 - User can specify which team they belong to. Homepage tasks will be filtered to show only those teams tasks.
+- User can view image associated with task if applicable.
 
 ### Edit a task
 
@@ -155,6 +158,21 @@ at the top of the `homepage`.
 
 - Users can logout of the application.
 
+
+### Lab 37 (4.5.22)
+
+#### Updated `Task` model
+
+- Users can optionally select a file to attach to a task.
+If a user attaches a file to a task, the file is uploaded to S3, and associated with that task.
+
+![Updated View A Task](/images/fileUpload_lab37.png)
+
+#### Update `View Task` page
+
+- Users can now view the image associated with that Task.
+
+![Updated View A Task](/images/viewTask_lab37.png)
 
 ## Testing
 
