@@ -26,6 +26,10 @@ import com.amplifyframework.datastore.generated.model.Task;
 import com.shaneroach.taskmaster.R;
 import com.shaneroach.taskmaster.adapter.TaskListRecycleReviewAdapter;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +51,33 @@ public class HomeActivity extends AppCompatActivity {
 
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         tasks = new ArrayList<>();
+
+//        String emptyFileName = "emptyTestFileName";
+//        File emptyFile = new File(getApplicationContext().getFilesDir(), "emptyTestFileName");
+//
+//        try {
+//            BufferedWriter emptyFileBufferedWriter = new BufferedWriter(new FileWriter(emptyFile));
+//            emptyFileBufferedWriter.append("Some test text");
+//            emptyFileBufferedWriter.close();
+//        } catch (IOException ioe) {
+//            Log.e(TAG, "Could not write file locally with filename" + emptyFileName);
+//        }
+//
+//        String emptyFileS3Key = "someFileOns3";
+//
+//        Amplify.Storage.uploadFile(
+//                emptyFileS3Key,
+//                emptyFile,
+//                success -> {
+//                    Log.i(TAG, "S3 upload succeeded: " + success.getKey());
+//                },
+//                failure -> {
+//                    Log.i(TAG, ("S3 upload failed"));
+//
+//                });
+//
+
+
 
         setUpAddTaskButton();
         setUpAllTasksButton();
