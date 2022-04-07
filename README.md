@@ -87,12 +87,7 @@ An android application that allows you to keep track of all your tasks.
 
 #### Updated `Homepage`
 
-![Update Homepage](/images/update_homepage_lab31.png)
-
 #### Updated `View Task`
-
-![Update ViewTask](/images/update_viewTask_lab31.png)
-
 
 ### Lab 32 (3.29.22)
 
@@ -105,26 +100,17 @@ An android application that allows you to keep track of all your tasks.
 #### Updated `Homepage`
 - Refactored homepage’s RecyclerView to display all Task entities in DynamoDB.
 
-![Update Homepage](/images/update_homepage_lab32.png)
-
-
 ### Lab 33 (3.30.22)
 
 #### Tasks Are Owned By Teams
 - Updated tasks to be owned by teams.
 - Three default teams have been made; elves, robots, and humans.
 
-![Update Homepage](/images/tasksWithTeams_lab33.png)
-
 #### Updated `Add Task Form`
 - Spinner used to select a team when creating a task was added.
 
-![Update Homepage](/images/update_addTask_lab33.png)
-
 #### Updated `Settings Page`
 - Added ability to allow users to choose a team, and filter the tasks on the homepage corresponding to the chosen team.
-
-![Update Homepage](/images/update_userSettings_lab33.png)
 
 
 ### Lab 34 (3.31.22)
@@ -133,17 +119,8 @@ An android application that allows you to keep track of all your tasks.
 - Added new task form to edit a Task
 - Added functionality to delete a Task on the  `Edit Task Form`
 
-![Added Edit A Task](/images/added_editTask_lab34.png)
-
 #### Updated `View Task`
 - Added button on page to allow you to edit the viewed task.
-
-![Updated View A Task](/images/update_viewTask_lab34.png)
-
-#### Publish to Google Play
-
-- WIP
-
 
 ### Lab 36 (4.4.22)
 
