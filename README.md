@@ -20,6 +20,7 @@ An android application that allows you to keep track of all your tasks.
 
 - User can add a task with a given title, description, status, and team. This will be added to the users current task list.
 - User can optionally upload an image file when creating a task.
+- Users can can choose to upload a file to a new task page when browsing in other applications.
 
 
 ### View a specific task
@@ -173,6 +174,18 @@ If a user attaches a file to a task, the file is uploaded to S3, and associated 
 - Users can now view the image associated with that Task.
 
 ![Updated View A Task](/images/viewTask_lab37.png)
+
+
+### Lab 38 (4.6.22)
+
+#### Feature Added: Adding a Task from Another Application
+
+- An intent filter was added to the application such that a user can hit the “share” button on an image
+in another application, choose TaskMaster as the app to share
+that image with, and be taken directly to the Add a Task activity with that image pre-selected.
+
+![Updated View A Task](/images/uploadImage_intentFilter_lab38.png)
+
 
 ## Testing
 
