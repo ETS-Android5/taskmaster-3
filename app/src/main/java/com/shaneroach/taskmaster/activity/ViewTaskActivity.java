@@ -101,10 +101,6 @@ public class ViewTaskActivity extends AppCompatActivity {
             Log.e(TAG, "ExecutionException while getting product");
         }
 
-//        EditText taskTitleEditText = ((EditText) findViewById(R.id.editTaskTitleEditText));
-//        taskTitleEditText.setText(taskToEdit.getTitle());
-
-
         String imageS3Key = taskToEdit.getTaskImageS3Key();
         if (imageS3Key != null && !imageS3Key.isEmpty()){
             Amplify.Storage.downloadFile(

@@ -21,7 +21,8 @@
             android:exported="false" />
         <activity
             android:name=".activity.EditTaskActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".activity.HomeActivity"/>
         <activity
             android:name=".activity.UserSettingsActivity"
             android:exported="false"
@@ -36,8 +37,18 @@
             android:parentActivityName=".activity.HomeActivity" />
         <activity
             android:name=".activity.AddTaskActivity"
-            android:exported="false"
-            android:parentActivityName=".activity.HomeActivity" />
+            android:exported="true"
+            android:parentActivityName=".activity.HomeActivity">
+            <intent-filter android:label="Grab image for new task">
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+        </activity>
+
+
+
+
         <activity
             android:name=".activity.HomeActivity"
             android:exported="true">

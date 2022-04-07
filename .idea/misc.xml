@@ -14,8 +14,9 @@
         <entry key="app/src/main/res/drawable/ic_bgHome_background.xml" value="0.1315" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1315" />
         <entry key="app/src/main/res/drawable/orange.xml" value="0.176" />
+        <entry key="app/src/main/res/drawable/red.xml" value="0.2295" />
         <entry key="app/src/main/res/font/aldrich.xml" value="0.19010416666666666" />
-        <entry key="app/src/main/res/layout/activity_add_task.xml" value="0.21213836669921882" />
+        <entry key="app/src/main/res/layout/activity_add_task.xml" value="0.31504516601562504" />
         <entry key="app/src/main/res/layout/activity_all_tasks.xml" value="0.27583469999009286" />
         <entry key="app/src/main/res/layout/activity_alltask.xml" value="0.1659637451171875" />
         <entry key="app/src/main/res/layout/activity_alltasks.xml" value="0.1" />
