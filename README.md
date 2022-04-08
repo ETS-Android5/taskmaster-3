@@ -21,6 +21,7 @@ An android application that allows you to keep track of all your tasks.
 - User can add a task with a given title, description, status, and team. This will be added to the users current task list.
 - User can optionally upload an image file when creating a task.
 - Users can can choose to upload a file to a new task page when browsing in other applications.
+- When the user adds a task, their location should is retrieved and included as part of the saved Task.
 
 
 ### View a specific task
@@ -162,6 +163,15 @@ in another application, choose TaskMaster as the app to share
 that image with, and be taken directly to the Add a Task activity with that image pre-selected.
 
 ![Updated View A Task](/images/uploadImage_intentFilter_lab38.png)
+
+### Lab 39 (4.7.22)
+
+#### Feature Added: Location Integration with Task Creation
+- When the user adds a task, their location is retrieved and included as part of the saved Task.
+
+#### Updated `View Task` Page
+- The user can now see the location associated with a given task.
+![Updated View A Task](/images/viewTask_lab39.png)
 
 
 ## Testing

@@ -7,25 +7,20 @@ subscription OnCreateTask {
     dateCreated
     taskImageS3Key
     taskStatusEnum
+    taskLatitude
+    taskLongitude
     teamId
     teamName {
       id
       name
       tasks {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 subscription OnUpdateTask {
@@ -36,25 +31,20 @@ subscription OnUpdateTask {
     dateCreated
     taskImageS3Key
     taskStatusEnum
+    taskLatitude
+    taskLongitude
     teamId
     teamName {
       id
       name
       tasks {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 subscription OnDeleteTask {
@@ -65,25 +55,20 @@ subscription OnDeleteTask {
     dateCreated
     taskImageS3Key
     taskStatusEnum
+    taskLatitude
+    taskLongitude
     teamId
     teamName {
       id
       name
       tasks {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 subscription OnCreateTeam {
@@ -98,21 +83,16 @@ subscription OnCreateTeam {
         dateCreated
         taskImageS3Key
         taskStatusEnum
+        taskLatitude
+        taskLongitude
         teamId
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 subscription OnUpdateTeam {
@@ -127,21 +107,16 @@ subscription OnUpdateTeam {
         dateCreated
         taskImageS3Key
         taskStatusEnum
+        taskLatitude
+        taskLongitude
         teamId
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 subscription OnDeleteTeam {
@@ -156,20 +131,15 @@ subscription OnDeleteTeam {
         dateCreated
         taskImageS3Key
         taskStatusEnum
+        taskLatitude
+        taskLongitude
         teamId
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
