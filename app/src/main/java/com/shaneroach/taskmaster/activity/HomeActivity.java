@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.analytics.AnalyticsEvent;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.auth.AuthUser;
 import com.amplifyframework.auth.AuthUserAttribute;
@@ -31,6 +32,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
@@ -78,7 +80,7 @@ public class HomeActivity extends AppCompatActivity {
 //
 
 
-
+        init();
         setUpAddTaskButton();
         setUpAllTasksButton();
         setUpLoginButton();
@@ -161,6 +163,16 @@ public class HomeActivity extends AppCompatActivity {
 
                 failure -> Log.i(TAG, "failed with this response: ")
         );
+    }
+
+    private void init(){
+        AnalyticsEvent event = AnalyticsEvent.builder()
+                .name("openedApp")
+                .addProperty("timeOpened", Long.toString(new Date().getTime()))
+                .addProperty("eventDescription", "Opened HomeActivity")
+                .build();
+
+        Amplify.Analytics.recordEvent(event);
     }
 
     private void setUpUserSettingsButton() {

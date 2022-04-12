@@ -30,6 +30,10 @@ An android application that allows you to keep track of all your tasks.
 - User can specify which team they belong to. Homepage tasks will be filtered to show only those teams tasks.
 - User can view image associated with task if applicable.
 
+#### Accessibility
+- User can choose to translate the task description to Spanish.
+- User can hear task description spoken aloud.
+
 ### Edit a task
 
 - User can edit a task.
@@ -172,6 +176,23 @@ that image with, and be taken directly to the Add a Task activity with that imag
 #### Updated `View Task` Page
 - The user can now see the location associated with a given task.
 ![Updated View A Task](/images/viewTask_lab39.png)
+
+### Lab 41 (4.11.22)
+
+#### Added Analytics
+- Events are now being tracked using Amazon Pinpoint. Everytime a user enters the Home Activity, it is recorded.
+![Analytics](/images/pinpoint_lab41.png)
+
+#### Added Predictions
+
+##### Text to Speech
+- Added ability to hear Task description spoken aloud on `View Task` page.
+
+##### Translate Text
+- Added ability to view a translated Task description to Spanish on `View Task` page.
+![Translate A Description](/images/translate_lab41.png)
+
+
 
 
 ## Testing

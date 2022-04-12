@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
 import android.location.Geocoder;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -32,7 +33,11 @@ import com.google.android.gms.tasks.OnTokenCanceledListener;
 import com.shaneroach.taskmaster.R;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.CompletableFuture;
@@ -48,6 +53,7 @@ public class ViewTaskActivity extends AppCompatActivity {
     private EditText taskTitleEditText;
     FusedLocationProviderClient locationProviderClient = null;
     Geocoder geocoder;
+    private final MediaPlayer mp = new MediaPlayer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +65,8 @@ public class ViewTaskActivity extends AppCompatActivity {
 
         setUpUIElementsOG();
         setUpUIElementsEdit();
+        setUpSpeakButton();
+        setUpTranslateButton();
         setUpEditTaskButton();
     }
 
@@ -217,6 +225,57 @@ public class ViewTaskActivity extends AppCompatActivity {
 
     }
 
+    private void setUpSpeakButton(){
+        Button buttonSpeakButtonDescription = findViewById(R.id.buttonSpeakDescription);
+
+        buttonSpeakButtonDescription.setOnClickListener(view ->{
+
+            String taskDescription = taskToEdit.getDescription();
+
+            Amplify.Predictions.convertTextToSpeech(
+                    taskDescription,
+                    result -> {
+                        playAudio(result.getAudioData());
+
+                    },
+                    error -> Log.e(TAG, "Conversion failed", error)
+            );
+
+
+        });
+
+
+    }
+
+    private void setUpTranslateButton(){
+        Button buttonSpeakButtonDescription = findViewById(R.id.buttonTranslateDescription);
+        TextView taskViewBodyView = (TextView) findViewById(R.id.textTaskViewBody);
+
+
+        buttonSpeakButtonDescription.setOnClickListener(view ->{
+
+            String taskDescription = taskToEdit.getDescription();
+
+            Amplify.Predictions.translateText(taskDescription,
+                    result -> {
+                        Log.i("MyAmplifyApp", result.getTranslatedText());
+                        runOnUiThread(() ->
+                        {
+                            taskViewBodyView.setText(result.getTranslatedText());
+                        });
+
+                    },
+                    error -> Log.e("MyAmplifyApp", "Translation failed", error)
+            );
+
+
+
+
+        });
+
+
+    }
+
 
     private void setUpUIElementsOG() {
         Intent callingIntent = getIntent();
@@ -251,6 +310,25 @@ public class ViewTaskActivity extends AppCompatActivity {
             taskViewStateView.setText(taskStateEnum);
         } else {
             taskViewStateView.setText(R.string.no_task_state);
+        }
+    }
+
+
+    private void playAudio(InputStream data) {
+        File mp3File = new File(getCacheDir(), "audio.mp3");
+
+        try (OutputStream out = new FileOutputStream(mp3File)) {
+            byte[] buffer = new byte[8 * 1_024];
+            int bytesRead;
+            while ((bytesRead = data.read(buffer)) != -1) {
+                out.write(buffer, 0, bytesRead);
+            }
+            mp.reset();
+            mp.setOnPreparedListener(MediaPlayer::start);
+            mp.setDataSource(new FileInputStream(mp3File).getFD());
+            mp.prepareAsync();
+        } catch (IOException error) {
+            Log.e("MyAmplifyApp", "Error writing audio file", error);
         }
     }
 }
