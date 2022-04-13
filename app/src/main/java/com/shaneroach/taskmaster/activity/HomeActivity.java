@@ -23,7 +23,10 @@ import com.amplifyframework.auth.AuthUserAttribute;
 import com.amplifyframework.auth.AuthUserAttributeKey;
 import com.amplifyframework.auth.options.AuthSignUpOptions;
 import com.amplifyframework.core.Amplify;
+import com.amplifyframework.core.InitializationStatus;
 import com.amplifyframework.datastore.generated.model.Task;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.shaneroach.taskmaster.R;
 import com.shaneroach.taskmaster.adapter.TaskListRecycleReviewAdapter;
 
@@ -78,6 +81,8 @@ public class HomeActivity extends AppCompatActivity {
 //
 //                });
 //
+
+
 
 
         init();
@@ -173,6 +178,9 @@ public class HomeActivity extends AppCompatActivity {
                 .build();
 
         Amplify.Analytics.recordEvent(event);
+
+
+
     }
 
     private void setUpUserSettingsButton() {
