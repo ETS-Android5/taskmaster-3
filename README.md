@@ -45,6 +45,10 @@ An android application that allows you to keep track of all your tasks.
 - User can see their username on `homepage`
 - User can signout once logged in.
 
+### All Tasks
+
+- User can now view ads associated with Google.
+
 
 
 
@@ -191,6 +195,16 @@ that image with, and be taken directly to the Add a Task activity with that imag
 ##### Translate Text
 - Added ability to view a translated Task description to Spanish on `View Task` page.
 ![Translate A Description](/images/translate_lab41.png)
+
+### Lab 42 (4.12.22)
+
+#### Updated `All Tasks`
+- Google ads (AdMob) has been incorporated into activity.
+- A banner ad is now displayed at top of page.
+- An interstitial ad can be viewed upon clicking `Interstitial` button.
+- An rewarded ad can be viewed after clicking `Rewarded` button.
+
+![Ads](/images/adds_lab42.png)
 
 
 
